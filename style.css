@@ -1,0 +1,126 @@
+#header {
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  margin-top: 20px;
+  align-items: flex-end;
+  width: 90%
+}
+
+#header .title {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#header .title img {
+  max-width: 3em;
+}
+
+#header .title h2 {
+  padding-left: 0.5em;
+}
+
+#header .score {
+  margin: 0;
+  color: #6c90ac;
+}
+#header .tried {
+  margin-top: 0;
+}
+
+#cards {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%; /* 新增：寬度和標頭一致 */
+  margin: 0 auto;  /* 新增：置中 */
+}
+
+.card {
+  flex: 7% 1 1;  /* 每個 item 分配容器寬度 */
+  /* flex-basis flex-grow flex-shrink  寬度由 flex-basis 設定，剩下的 flex-grow 和 flex-shrink 是針對「空間有剩」或「空間不夠」等情況，設定元素如何縮放*/
+  height: 8vw;  /* 依視窗的寬度等比例變化 */
+  border: 2px solid #e0e0e0;
+  margin: 2px;
+  box-sizing: border-box; /* 設定 box-sizing*/
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+}
+
+.card.back {
+  background-image: url("cardback.png");
+  background-size: cover;
+}
+
+.card.paired {
+  background-color: #dae0e3;
+}
+
+.card p {
+  margin: 3px 5px;
+  font-size: 20px;
+}
+
+.card p:last-child {
+  transform: rotate(180deg);
+}
+
+.card img {
+  max-width: 30%;
+  align-self: center;
+  /* align-self是設定交叉軸cross axis，目前主軸是column，所以交叉軸是row*/
+}
+
+#footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 94%;
+  margin-top: 12px;
+}
+
+/** animation **/
+.wrong {
+  animation-name: wrongAnimation;
+  animation-duration: 0.2s;
+  animation-iteration-count: 5;
+}
+
+@keyframes wrongAnimation {
+  0% {
+    border: 2px solid red;
+  }
+  50% {
+    border: 2px solid #ffd54f;
+  }
+  100% {
+    border: 2px solid red;
+  }
+}
+
+
+/** Game finished **/
+.completed {
+  position: absolute;
+  z-index: 999;
+  top: 33vh;
+  background-color: RGBA(232, 246, 254, 0.8);
+  width: 100vw;
+  padding: 50px 0;
+}
+
+.completed > p {
+  font-size: 1.5em;
+  color: black;
+  text-align: center;
+  margin: 0;
+}
+
+.completed > p:first-child {
+  font-size: 3em;
+  font-weight: 700;
+  color: #758d9a;
+}
